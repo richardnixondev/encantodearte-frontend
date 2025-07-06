@@ -1,0 +1,121 @@
+.pd-container {
+  display: flex;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.pd-images {
+  flex: 1;
+}
+
+.pd-main-img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.pd-thumbnails {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.pd-thumbnails img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.pd-thumbnails img:hover {
+  border-color: #4f7448;
+}
+
+.pd-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pd-info h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: #3E2F22;
+}
+
+.pd-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #574637;
+}
+
+.pd-quantity-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pd-quantity-box button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #D2C5B8;
+  background: #D9BFA2;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pd-quantity-box span {
+  width: 32px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.pd-buy-btn {
+  background-color: #D9BFA2;
+  color: white;
+  font-size: 1rem;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.pd-buy-btn:hover {
+  background-color: #C2A78B;
+}
+
+.pd-shipping label {
+  font-weight: bold;
+}
+
+.pd-cep-box {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.pd-cep-box input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.pd-cep-box button {
+  background: none;
+  border: 1px solid #D2C5B8;
+  color: #D2C5B8;
+  padding: 0 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pd-cep-box button:hover {
+  background-color: #eaeaed;
+}
