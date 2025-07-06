@@ -35,7 +35,7 @@ useEffect(() => {
               onClick={() => navigate(`/products/${product._id}`)}
             >
               <img
-                src={product.imageUrl || "https://via.placeholder.com/300"}
+                src={`http://localhost:5005${product.imageUrl}`}
                 alt={product.name}
                 className="product-image"
               />
@@ -43,7 +43,7 @@ useEffect(() => {
               <p className="product-description">
                 {product.description.slice(0, 80)}...
               </p>
-              <p className="product-price">€ {product.price.toFixed(2)}</p>
+              <p className="product-price">R$ {product.price.toFixed(2)}</p>
             </div>
           ))
         )}
