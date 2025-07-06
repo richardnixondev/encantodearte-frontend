@@ -11,7 +11,7 @@ export default function Home() {
 useEffect(() => {
   axios.get("http://localhost:5005/products")
     .then((response) => {
-      console.log("Produtos recebidos:", response.data); // Adicione isso
+      console.log("Produtos recebidos:", response.data);
       setProducts(response.data);
     })
     .catch((err) => {
@@ -34,16 +34,17 @@ useEffect(() => {
               className="product-card"
               onClick={() => navigate(`/products/${product._id}`)}
             >
+              <p className="product-price">R$ {product.price.toFixed(2)}</p>
               <img
                 src={`http://localhost:5005${product.imageUrl}`}
                 alt={product.name}
                 className="product-image"
               />
               <h2 className="product-name">{product.name}</h2>
-              <p className="product-description">
-                {product.description.slice(0, 80)}...
-              </p>
-              <p className="product-price">R$ {product.price.toFixed(2)}</p>
+        <button className="pd-buy-btn" >
+          🛒 Adicionar ao Carrinho
+        </button>
+              
             </div>
           ))
         )}

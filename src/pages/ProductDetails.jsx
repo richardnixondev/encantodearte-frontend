@@ -23,7 +23,7 @@ export default function ProductDetails() {
   };
 
   const handleAddToCart = () => {
-    // lógicas do carrinho (localStorage ou context)
+  
   };
 
   if (!product) return <p>Loading...</p>;
@@ -38,7 +38,7 @@ export default function ProductDetails() {
             alt="thumb"
             onClick={() => setMainImage(`http://localhost:5005${product.imageUrl}`)}
           />
-          {/* Futuras imagens extras podem ir aqui */}
+        
         </div>
       </div>
 
