@@ -1,8 +1,12 @@
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import { FiShoppingCart, FiUser } from "react-icons/fi";
 import "/src/Navbar.css";
 
 export default function Navbar() {
+  const { user } = useContext(AuthContext);
+
   return (
     <nav className="navbar">
       <Link to="/" className="navbar-logo">
@@ -15,10 +19,12 @@ export default function Navbar() {
       </div>
 
       <div className="navbar-icons">
-        <Link to="/profile">
+        <Link to="/profile" className="navbar-icon">
           <FiUser size={22} />
+          <span>{user ? user.surname : "Login"}</span>
         </Link>
-        <Link to="/cart">
+
+        <Link to="/cart" className="navbar-icon">
           <FiShoppingCart size={22} />
         </Link>
       </div>
