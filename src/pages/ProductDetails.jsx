@@ -22,9 +22,23 @@ export default function ProductDetails() {
     setQuantity(q => Math.max(1, type === "plus" ? q + 1 : q - 1));
   };
 
-  const handleAddToCart = () => {
-  
-  };
+  const addToCart = (product) => {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const existingItemIndex = cart.findIndex(
+    (item) => item.product._id === product._id
+  );
+
+  if (existingItemIndex !== -1) {
+    cart[existingItemIndex].quantity += 1;
+  } else {
+    cart.push({ product, quantity: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Produto adicionado ao carrinho!");
+};
+
 
   if (!product) return <p>Loading...</p>;
 
@@ -53,8 +67,9 @@ export default function ProductDetails() {
           <button onClick={() => handleQuantity("plus")}>+</button>
         </div>
 
-        <button className="pd-buy-btn" onClick={handleAddToCart}>
-          🛒 Comprar
+       
+        <button className="pd-buy-btn" onClick={() => addToCart(product)}>
+          🛒 Adicionar ao Carrinho
         </button>
 
         <div className="pd-shipping">
