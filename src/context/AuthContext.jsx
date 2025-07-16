@@ -33,10 +33,10 @@ export function AuthProvider({ children }) {
     }
   }, [storedToken]);
 
-  // Função para login (você pode usá-la em Login.jsx)
+
   const login = (authToken) => {
     localStorage.setItem("authToken", authToken);
-    // força revalidação
+ 
     axios
       .get("http://localhost:5005/auth/verify", {
         headers: { Authorization: `Bearer ${authToken}` }
@@ -48,9 +48,10 @@ export function AuthProvider({ children }) {
       });
   };
 
-  // Função de logout
+ 
   const logout = () => {
     localStorage.removeItem("authToken");
+    localStorage.removeItem("cart"); //clear cart when logout
     setUser(null);
   };
 
