@@ -46,7 +46,7 @@
 .product-form-container button {
   padding: 0.9rem 1.2rem;
   font-size: 1rem;
-  background-color: #ff914d;
+  background-color: #D9BFA2;
   color: white;
   border: none;
   border-radius: 1rem;
@@ -55,7 +55,7 @@
 }
 
 .product-form-container button:hover {
-  background-color: #e27833;
+  background-color: #C2A78B;
 }
 
 .product-form-container p {
