@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import "../Login.css";
+import { useNavigate, Link } from "react-router-dom";
+import "../AuthForm.css";
 
 export default function Signup() {
   const [form, setForm] = useState({
@@ -29,13 +29,14 @@ export default function Signup() {
   };
 
   return (
-    <div>
+    <div className="auth-form-container">
       <h1>Create Account</h1>
       <input name="surname" placeholder="First Name" onChange={handleChange} />
       <input name="lastname" placeholder="Last Name" onChange={handleChange} />
       <input name="email" placeholder="Email" onChange={handleChange} />
       <input name="password" type="password" placeholder="Password" onChange={handleChange} />
       <button onClick={handleSignup}>Sign Up</button>
+      <p>Already have an account? <Link to="/login">Login</Link></p>
     </div>
   );
 }

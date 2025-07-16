@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import "../Login.css";
+import "../AuthForm.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -29,7 +29,7 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container">
+    <div className="auth-form-container">
       <h1>Login</h1>
       <input
         type="email"
