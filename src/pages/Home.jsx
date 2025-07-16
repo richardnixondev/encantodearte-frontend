@@ -19,10 +19,14 @@ useEffect(() => {
     });
 }, []);
 
+  const handleAddToCart = () => {
+  
+  };
+
 
   return (
     <div className="home-container">
-      <h1 className="heading">Explore Our Handmade Products 🧵</h1>
+      <h1 className="heading">Explore Nossos Produtos feita à mäo 🧵</h1>
 
       <div className="products-grid">
         {products.length === 0 ? (
@@ -41,8 +45,8 @@ useEffect(() => {
                 className="product-image"
               />
               <h2 className="product-name">{product.name}</h2>
-        <button className="pd-buy-btn" >
-          🛒 Adicionar ao Carrinho
+        <button className="pd-buy-btn" onClick={handleAddToCart}>
+          Veja mais detalhes
         </button>
               
             </div>
