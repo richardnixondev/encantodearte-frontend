@@ -1,12 +1,13 @@
 import { useState, useContext } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import "../Login.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useContext(AuthContext);  // <- use login do contexto
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -18,7 +19,7 @@ export default function Login() {
 
       const token = response.data.authToken;
 
-      login(token); // <- chama a função do contexto que seta o usuário
+      login(token);
       alert("Login successful");
       navigate("/");
     } catch (err) {
@@ -28,20 +29,25 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h1>Login</h1>
       <input
+        type="email"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
-        placeholder="Password"
         type="password"
+        placeholder="Senha"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleLogin}>Entrar</button>
+
+      <p className="signup-link">
+        Ainda não tem uma conta? <Link to="/signup">Crie aqui</Link>
+      </p>
     </div>
   );
 }

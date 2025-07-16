@@ -11,8 +11,10 @@ export default function Profile() {
     <div style={{ padding: '2rem' }}>
       <h2>Welcome, {user.surname}!</h2>
       <p>Email: {user.email}</p>
-      <p>Admin: {user.isAdmin ? "Yes" : "No"}</p>
+      
       <button onClick={logout}>Logout</button>
     </div>
   );
 }
+
+//<p>Admin: {user.isAdmin ? "Yes" : "No"}</p> for safety reasons, the isAdmin tag will not be public at profile.

@@ -19,7 +19,7 @@ export default function Navbar() {
       </div>
 
       <div className="navbar-icons">
-        <Link to="/profile" className="navbar-icon">
+        <Link to={user ? "/profile" : "/login"} className="navbar-icon">
           <FiUser size={22} />
           <span>{user ? user.surname : "Login"}</span>
         </Link>
