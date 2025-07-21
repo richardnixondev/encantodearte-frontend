@@ -4,6 +4,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import "../AuthForm.css";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +14,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:5005/auth/login", {
+      const response = await axios.post(`${apiUrl}/auth/login`, {
         email,
         password
       });
