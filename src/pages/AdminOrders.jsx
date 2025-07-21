@@ -1,28 +1,30 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function AdminOrders() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:5005/orders", {
+    axios.get(`${apiUrl}/orders`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((res) => setOrders(res.data))
-      .catch(() => alert("Only admins can access this."));
+      .catch(() => alert("Somente administradores podem acessar isto"));
   }, []);
 
   const updateStatus = (orderId, status) => {
     const token = localStorage.getItem("token");
-    axios.put(`http://localhost:5005/orders/${orderId}/status`, { status }, {
+    axios.put(`${apiUrl}/orders/${orderId}/status`, { status }, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(() => {
         alert("Status updated");
         window.location.reload();
       })
-      .catch(() => alert("Failed to update status"));
+      .catch(() => alert("Falha ao atualizar o status"));
   };
 
   return (

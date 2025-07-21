@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "/src/ProductDetails.css";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -11,10 +13,10 @@ export default function ProductDetails() {
   const [cep, setCep] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:5005/products/${id}`)
+    axios.get(`${apiUrl}/products/${id}`)
       .then(res => {
         setProduct(res.data);
-        setMainImage(`http://localhost:5005${res.data.imageUrl}`);
+        setMainImage(`${apiUrl}${res.data.imageUrl}`);
       });
   }, [id]);
 
@@ -48,9 +50,9 @@ export default function ProductDetails() {
         <img src={mainImage} alt={product.name} className="pd-main-img" />
         <div className="pd-thumbnails">
           <img
-            src={`http://localhost:5005${product.imageUrl}`}
+            src={`${apiUrl}${product.imageUrl}`}
             alt="thumb"
-            onClick={() => setMainImage(`http://localhost:5005${product.imageUrl}`)}
+            onClick={() => setMainImage(`${apiUrl}${product.imageUrl}`)}
           />
         
         </div>

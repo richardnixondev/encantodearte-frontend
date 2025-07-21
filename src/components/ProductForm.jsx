@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '/src/ProductForm.css';
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function ProductForm() {
   const { productId } = useParams();
   const navigate = useNavigate();
@@ -27,11 +29,11 @@ export default function ProductForm() {
   useEffect(() => {
     if (productId) {
       setIsEdit(true);
-      axios.get(`http://localhost:5005/products/${productId}`)
+      axios.get(`${apiUrl}/${productId}`)
         .then((res) => {
           const { name, description, category, price, stock, imageUrl } = res.data;
           setFormData({ name, description, category, price, stock, image: null });
-          setPreview(`http://localhost:5005${imageUrl}`);
+          setPreview(`${apiUrl}${imageUrl}`);
         })
         .catch(err => console.error("Error loading product", err));
     }
@@ -74,10 +76,10 @@ export default function ProductForm() {
       };
 
       if (isEdit) {
-        await axios.put(`http://localhost:5005/products/${productId}`, Object.fromEntries(payload), config);
+        await axios.put(`${apiUrl}/products/${productId}`, Object.fromEntries(payload), config);
         setMessage('Product updated successfully!');
       } else {
-        await axios.post('http://localhost:5005/products', payload, config);
+        await axios.post(`${apiUrl}/products/, payload, config`);
         setMessage('Product created successfully!');
         setFormData({ name: '', description: '', category: 'Other', price: '', stock: '', image: null });
         setPreview(null);
@@ -92,7 +94,7 @@ export default function ProductForm() {
     const token = localStorage.getItem('authToken');
     if (!window.confirm("Are you sure you want to delete this product?")) return;
     try {
-      await axios.delete(`http://localhost:5005/products/${productId}`, {
+      await axios.delete(`${apiUrl}/products/${productId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -106,7 +108,7 @@ export default function ProductForm() {
 
   return (
     <div className="product-form-container">
-      <h2>{isEdit ? 'Edit Product' : 'Create a New Product'}</h2>
+      <h2>{isEdit ? 'Editar Produto' : 'Cadastrar novo produto'}</h2>
 
       {message && <p>{message}</p>}
 
@@ -174,7 +176,7 @@ export default function ProductForm() {
           </div>
         )}
 
-        <button type="submit">{isEdit ? 'Update' : 'Create'} Product</button>
+        <button type="submit">{isEdit ? 'Atualizar' : 'Cadastrar'} Produto</button>
         {isEdit && (
           <button type="button" onClick={handleDelete} style={{ marginLeft: '1rem', background: 'red', color: 'white' }}>
             Delete Product

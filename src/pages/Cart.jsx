@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../Cart.css";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
@@ -46,7 +48,7 @@ export default function Cart() {
           {cartItems.map(({ product, quantity }) => (
             <div className="cart-item" key={product._id}>
               <img
-                src={`http://localhost:5005${product.imageUrl}`}
+                src={`${apiUrl}${product.imageUrl}`}
                 alt={product.name}
                 className="product-image"
               />
