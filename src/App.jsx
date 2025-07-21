@@ -10,6 +10,7 @@ import MyOrders from "./pages/MyOrders";
 import AdminOrders from "./pages/AdminOrders";
 import ProductForm from "./components/ProductForm";
 import Profile from "./pages/Profile";
+import AdminProductList from "./pages/AdminProductList";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/products" element={<AdminProductList />} />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
@@ -25,7 +27,6 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/orders/me" element={<MyOrders />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
-        <Route path="/create-product" element={<ProductForm />} />
         <Route path="/products/new" element={<ProductForm />} />
         <Route path="/products/edit/:productId" element={<ProductForm isEdit={true} />} />
       </Routes>
