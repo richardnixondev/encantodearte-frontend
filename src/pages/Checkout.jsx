@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function Checkout() {
   const [form, setForm] = useState({
     fullName: "",
@@ -22,7 +24,7 @@ export default function Checkout() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const token = localStorage.getItem("token");
 
-    if (!token) return alert("You must be logged in!");
+    if (!token) return alert("Voce precisa estar logado!");
 
     const payload = {
       items: cart.map((item) => ({
@@ -36,18 +38,18 @@ export default function Checkout() {
       )
     };
 
-    axios.post("http://localhost:5005/orders", payload, {
+    axios.post(`${apiUrl}/orders`, payload, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
     .then(() => {
-      alert("Order placed!");
+      alert("Ordem Criada!");
       localStorage.removeItem("cart");
     })
     .catch((err) => {
-      console.error("Error placing order:", err);
-      alert("Something went wrong.");
+      console.error("Erro ao criar uma ordem:", err);
+      alert("Alguma coisa deu errado.");
     });
   };
 
