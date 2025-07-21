@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import "../AuthForm.css";
 
+
 export default function Signup() {
   const [form, setForm] = useState({
     surname: "",
@@ -16,9 +17,10 @@ export default function Signup() {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+const apiUrl = import.meta.env.VITE_API_URL;
 
   const handleSignup = () => {
-    axios.post("http://localhost:5005/auth/signup", form)
+    axios.post(`${apiUrl}/auth/signup`, form)
       .then(() => {
         alert("Account created!");
         navigate("/login");
