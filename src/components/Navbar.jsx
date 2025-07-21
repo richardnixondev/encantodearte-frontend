@@ -15,9 +15,8 @@ export default function Navbar() {
       setCartCount(total);
     };
 
-    updateCartCount(); // inicial
+    updateCartCount();
     window.addEventListener("cartUpdated", updateCartCount);
-
     return () => {
       window.removeEventListener("cartUpdated", updateCartCount);
     };
@@ -30,12 +29,21 @@ export default function Navbar() {
       </Link>
 
       <div className="navbar-links">
-        <Link to="/shop">Shop</Link>
         <Link to="/about">About</Link>
+        {user && <Link to="/orders/me">Meus Pedidos</Link>}
+
+        {user?.isAdmin && (
+          <>
+            <Link to="/admin/orders">Pedidos Admin</Link>
+            <Link to="/admin/users">Usuários</Link>
+            <Link to="/products">Todos os Produtos</Link>
+            <Link to="/products/new">Criar Produto</Link>
+          </>
+        )}
       </div>
 
       <div className="navbar-icons">
-        <Link to="/" className="navbar-icon">
+        <Link to={user ? "/profile" : "/login"} className="navbar-icon">
           <FiUser size={22} />
           <span>{user ? user.surname : "Login"}</span>
         </Link>
