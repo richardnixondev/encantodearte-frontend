@@ -35,7 +35,7 @@ export default function Navbar() {
         {user?.isAdmin && (
           <>
             <Link to="/admin/orders">Pedidos Admin</Link>
-            <Link to="/admin/users">Usuários</Link>
+            <Link to="/users">Usuários</Link>
             <Link to="/products">Todos os Produtos</Link>
             <Link to="/products/new">Criar Produto</Link>
           </>

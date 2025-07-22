@@ -11,6 +11,7 @@ import AdminOrders from "./pages/AdminOrders";
 import ProductForm from "./components/ProductForm";
 import Profile from "./pages/Profile";
 import AdminProductList from "./pages/AdminProductList";
+import Users from "./pages/AdminUserList.jsx"
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/users" element={<Users />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/orders/me" element={<MyOrders />} />
