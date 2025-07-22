@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "../Checkout.css";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -54,7 +55,7 @@ export default function Checkout() {
   };
 
   return (
-    <div>
+    <div className="checkout-container">
       <h1>Checkout</h1>
       <input name="fullName" placeholder="Full name" onChange={handleChange} />
       <input name="street" placeholder="Street" onChange={handleChange} />
