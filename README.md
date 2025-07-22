@@ -7,7 +7,7 @@
 **Encanto de Arte** is a full-stack e-commerce application for selling handmade and artisanal products. It includes user authentication, admin dashboard, product management, shopping cart, and order tracking.
 
 
-## 📌 MVP (Technical Requirements)
+## 📌 (Technical Requirements)
 Your full-stack application must meet the following technical requirements:
 
 - ✅ Have a SPA frontend, built with React, consisting of multiple views and implementing all CRUD actions.
