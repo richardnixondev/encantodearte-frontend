@@ -29,7 +29,7 @@ export default function ProductForm() {
   useEffect(() => {
     if (productId) {
       setIsEdit(true);
-      axios.get(`${apiUrl}/${productId}`)
+      axios.get(`${apiUrl}/products/${productId}`)
         .then((res) => {
           const { name, description, category, price, stock, imageUrl } = res.data;
           setFormData({ name, description, category, price, stock, image: null });
@@ -79,7 +79,7 @@ export default function ProductForm() {
         await axios.put(`${apiUrl}/products/${productId}`, Object.fromEntries(payload), config);
         setMessage('Product updated successfully!');
       } else {
-        await axios.post(`${apiUrl}/products/, payload, config`);
+        await axios.post(`${apiUrl}/products/`, payload, config);
         setMessage('Product created successfully!');
         setFormData({ name: '', description: '', category: 'Other', price: '', stock: '', image: null });
         setPreview(null);
