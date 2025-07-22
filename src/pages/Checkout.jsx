@@ -22,7 +22,7 @@ export default function Checkout() {
 
   const handleSubmit = () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("authToken");
 
     if (!token) return alert("Voce precisa estar logado!");
 
