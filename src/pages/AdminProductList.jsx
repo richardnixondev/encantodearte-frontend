@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "/src/AdminProductList.css";
+import "../AdminProductList.css";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 

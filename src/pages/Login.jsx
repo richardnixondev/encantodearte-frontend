@@ -12,7 +12,9 @@ export default function Login() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault(); // Impede o reload da página
+
     try {
       const response = await axios.post(`${apiUrl}/auth/login`, {
         email,
@@ -33,19 +35,27 @@ export default function Login() {
   return (
     <div className="auth-form-container">
       <h1>Login</h1>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Senha"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Entrar</button>
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          autoComplete="username"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Senha"
+          autoComplete="current-password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Entrar</button>
+      </form>
 
       <p className="signup-link">
         Ainda não tem uma conta? <Link to="/signup">Crie aqui</Link>
