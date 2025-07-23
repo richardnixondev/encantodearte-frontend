@@ -10,12 +10,6 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // fecth api
-    fetch(`${apiUrl}/status`)
-      .then((res) => res.json())
-      .then((data) => console.log("API status:", data))
-      .catch((err) => console.error("Error to call API :", err));
-
     // get all products
     axios
       .get(`${apiUrl}/products`)
@@ -28,9 +22,6 @@ export default function Home() {
       });
   }, []);
 
-  const handleAddToCart = () => {
-    // Lógica futura para adicionar ao carrinho
-  };
 
   return (
     <div className="home-container">
@@ -53,7 +44,7 @@ export default function Home() {
                 className="product-image"
               />
               <h2 className="product-name">{product.name}</h2>
-              <button className="pd-buy-btn" onClick={handleAddToCart}>
+              <button className="pd-buy-btn">
                 Veja mais detalhes
               </button>
             </div>
